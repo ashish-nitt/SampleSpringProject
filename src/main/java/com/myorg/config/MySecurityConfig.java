@@ -41,13 +41,16 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/public/**", "/error/**", "*.css").permitAll()
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("USER")
+                .antMatchers("/", "/public/**", "/error/**", "*.css", "/login", "login?logout").permitAll()
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")//.hasAnyRole("ROLE_ADMIN")
+                .antMatchers("/user/**").access("hasRole('ROLE_USER')")//.hasAnyRole("ROLE_USER")
                 //.anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/public/login")
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
                 .permitAll()
                 .and()
                 .logout()
@@ -60,9 +63,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth.inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER")
-                .and()
-                .withUser("admin").password("password").roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
+        auth.inMemoryAuthentication().withUser("admin").password("password").roles("ADMIN");
     }
 }

@@ -4,6 +4,7 @@ import com.myorg.model.Qna;
 import com.myorg.service.QnaManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.web.ErrorController;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@PropertySource(value = {"classpath:application.properties"})
 public class QnaController implements ErrorController {
     @Value("${welcome.message:}")
     private String welcomeMessage;
@@ -54,6 +56,13 @@ public class QnaController implements ErrorController {
         System.out.println("QnaController.publicPages");
         setModel(model);
         return "thymeleaf" + req.getServletPath().toString();
+    }
+
+    @RequestMapping(value = "/login*", method = RequestMethod.GET)
+    public String loginPage(Map<String, Object> model, HttpServletRequest req) {
+        System.out.println("QnaController.loginPage");
+        setModel(model);
+        return "thymeleaf/public" + req.getServletPath().toString();
     }
 
     @RequestMapping(value = "/user/**", method = RequestMethod.GET)

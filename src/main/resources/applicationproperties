@@ -1,8 +1,0 @@
-
-
-welcome.message=Hello
-welcome.title=Homepage
-
-//For detailed logging during development
-logging.level.org.springframework=INFO
-logging.level.com=INFO

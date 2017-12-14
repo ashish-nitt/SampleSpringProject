@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="'Title: ' + ${pageTitle}"></title>
+    <title th:text="'Title: ' + ${title}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" type="text/css"
@@ -29,7 +29,7 @@
 <div class="container">
 
     <div class="starter-template">
-        <h1>Spring Boot Web Thymeleaf Example</h1>
+        <h1>Spring Boot Sample Web App</h1>
 
         <h2>
             <span th:text="'Message: ' + ${message}"></span><br/>
@@ -44,8 +44,8 @@ Click on the followings to visit other pages.<br/>
 <a href="/admin/adminpage">admin</a><br/>
 <a href="/public/homepage">Home</a><br/>
 <a href="/public/about">about</a><br/>
-<a href="/public/login">login</a><br/>
-<a href="/public/logout">logout</a><br/>
+<a href="/login">login</a><br/>
+<a href="/logout">logout</a><br/>
 <a href="/error/5xx">5xx</a><br/>
 <a href="/error/error">error</a><br/>
 <script type="text/javascript"

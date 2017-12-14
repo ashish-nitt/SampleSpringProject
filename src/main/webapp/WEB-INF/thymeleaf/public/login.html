@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"
           href="../../css/main.css"/>
 </head>
-<body>
+<body onload="document.f.username.focus()">
 
 <nav class="navbar navbar-inverse">
     <div class="container">
@@ -29,11 +29,24 @@
 <div class="container">
 
     <div class="starter-template">
-        <h1>Spring Boot Web Thymeleaf Example</h1>
+        <h1>Spring Boot Sample Web App</h1>
 
-        <h2>
-            <span th:text="'Message: ' + ${message}"></span>
-        </h2>
+        <form name="f" action="/login" method="POST">
+            <table>
+                <th>
+                <td>Login with username and password</td>
+                </th>
+                <tr>
+                    <td><input type="text" name="username" value=""/></td>
+                </tr>
+                <tr>
+                    <td><input type="password" name="password"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Login"/></td>
+                </tr>
+            </table>
+        </form>
     </div>
 
 </div>
