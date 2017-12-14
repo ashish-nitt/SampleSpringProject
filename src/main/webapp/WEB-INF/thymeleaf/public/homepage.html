@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <title th:text="'Title: ' + ${pageTitle}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" type="text/css"
@@ -32,7 +32,8 @@
         <h1>Spring Boot Web Thymeleaf Example</h1>
 
         <h2>
-            <span th:text="'Message: ' + ${message}"></span>
+            <span th:text="'Message: ' + ${message}"></span><br/>
+            <span th:text="'role: ' + ${role}"></span>
         </h2>
     </div>
 

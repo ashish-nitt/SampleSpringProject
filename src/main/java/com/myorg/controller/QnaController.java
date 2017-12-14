@@ -92,7 +92,7 @@ public class QnaController implements ErrorController {
     private void setModel(Map<String, Object> model) {
         Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>)    SecurityContextHolder.getContext().getAuthentication().getAuthorities();
         model.put("title", pageTitle);
-        model.put("welcomeMessage", welcomeMessage);
+        model.put("message", welcomeMessage);
         model.put("role", authorities);
     }
 }
